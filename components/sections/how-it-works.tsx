@@ -7,33 +7,33 @@ import { UserPlus, ShoppingCart, Package, Ship, Home, ChevronRight } from "lucid
 const steps = [
   {
     number: "01",
-    icon: UserPlus,
-    title: "Sign up",
-    description: "Get your free China address in under 2 minutes.",
+    icon: ShoppingCart,
+    title: "Get a quote",
+    description: "Tell us about your shipment and receive a detailed quote.",
   },
   {
     number: "02",
-    icon: ShoppingCart,
-    title: "Shop",
-    description: "Buy on any Chinese platform; ship to your assigned address.",
+    icon: Home,
+    title: "We assign your address",
+    description: "Get your dedicated address at our warehouses in China.",
   },
   {
     number: "03",
     icon: Package,
     title: "We receive & consolidate",
-    description: "Photo confirmation, weighing, optional consolidation.",
+    description: "Photo confirmation, weighing, and optional consolidation.",
   },
   {
     number: "04",
     icon: Ship,
     title: "We ship & clear customs",
-    description: "Air or sea freight + full customs handling on arrival.",
+    description: "Air or sea freight + full customs clearance in Panama.",
   },
   {
     number: "05",
-    icon: Home,
-    title: "You receive at your door",
-    description: "Track every step in real time.",
+    icon: UserPlus,
+    title: "Ready for distribution",
+    description: "Your cargo cleared and ready for pickup or delivery.",
   },
 ];
 
