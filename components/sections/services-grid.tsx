@@ -2,38 +2,58 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { MapPin, PackageCheck, Boxes, Plane, FileCheck2, Truck, ArrowRight } from "lucide-react";
+import {
+  FileCheck2,
+  Ship,
+  Plane,
+  PackageCheck,
+  Thermometer,
+  ShieldCheck,
+  ArrowRight,
+  RefreshCw,
+  Truck
+} from "lucide-react";
 
 const services = [
   {
-    icon: MapPin,
-    title: "Your address in China",
-    description: "We assign you a verified forwarding address in Shenzhen. Use it on Alibaba, 1688, Temu — anywhere.",
+    icon: FileCheck2,
+    title: "Customs Clearance",
+    description: "Full import and export documentation, tariff classification, and regulatory compliance.",
   },
   {
     icon: PackageCheck,
-    title: "Reception & verification",
-    description: "Every package is received, weighed, photographed, and matched to your account.",
+    title: "Nationalizations",
+    description: "Complete nationalization process for goods entering Panama's customs territory.",
   },
   {
-    icon: Boxes,
-    title: "Consolidation",
-    description: "Multiple suppliers? We combine your orders into one shipment to cut freight costs.",
+    icon: RefreshCw,
+    title: "Re-exports & Transit",
+    description: "Temporary imports, re-export procedures, and in-transit cargo management.",
+  },
+  {
+    icon: Ship,
+    title: "Sea Freight",
+    description: "FCL and LCL ocean freight from any port worldwide to Panama.",
   },
   {
     icon: Plane,
-    title: "Air or sea freight",
-    description: "Choose air (4–7 days) or sea (25–35 days) based on urgency and budget.",
+    title: "Air Freight",
+    description: "Express and standard air cargo services with full customs handling.",
   },
   {
-    icon: FileCheck2,
-    title: "Customs clearance",
-    description: "Our licensed brokers handle declaration, duties, and ANA paperwork in Panama.",
+    icon: Thermometer,
+    title: "Cold Chain",
+    description: "Temperature-controlled logistics for perishables and pharmaceuticals.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Custody of Valuables",
+    description: "Secure handling and storage for high-value and sensitive cargo.",
   },
   {
     icon: Truck,
-    title: "Door delivery",
-    description: "Last-mile delivery anywhere in Panama.",
+    title: "Live Animals",
+    description: "Specialized permits and logistics for live animal imports and exports.",
   },
 ];
 
@@ -80,11 +100,11 @@ export function ServicesGrid() {
           className="mx-auto mb-16 max-w-2xl text-center"
         >
           <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
-            Complete Follow-up
+            Our Services
           </span>
-          <h2 className="mb-4">Everything handled, start to finish.</h2>
+          <h2 className="mb-4">Complete customs & logistics solutions.</h2>
           <p className="text-lg text-foreground">
-            Six steps. One partner. From China to your door in Panama.
+            From documentation to delivery, we handle every step of your international trade operations.
           </p>
         </motion.div>
 
@@ -93,7 +113,7 @@ export function ServicesGrid() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
         >
           {services.map((service, index) => (
             <motion.div
@@ -102,25 +122,15 @@ export function ServicesGrid() {
               className="group relative overflow-hidden rounded-lg border border-border/50 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10"
             >
               <div className="relative">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10 transition-colors group-hover:bg-primary">
-                  <service.icon className="h-7 w-7 text-primary transition-colors group-hover:text-white" />
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 transition-colors group-hover:bg-primary">
+                  <service.icon className="h-6 w-6 text-primary transition-colors group-hover:text-white" />
                 </div>
 
-                <div className="mb-2 flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">
-                    {index + 1}
-                  </span>
-                  <h3 className="text-lg font-semibold">{service.title}</h3>
-                </div>
+                <h3 className="mb-2 text-base font-semibold">{service.title}</h3>
 
-                <p className="text-sm leading-relaxed text-foreground/80">
+                <p className="text-sm leading-relaxed text-foreground/70">
                   {service.description}
                 </p>
-
-                <div className="mt-4 flex items-center text-sm font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
-                  Learn more
-                  <ArrowRight className="ml-1 h-4 w-4" />
-                </div>
               </div>
             </motion.div>
           ))}
@@ -137,7 +147,7 @@ export function ServicesGrid() {
             href="#contact"
             className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Let us handle it!
+            Request a quote
             <ArrowRight className="h-4 w-4" />
           </a>
         </motion.div>

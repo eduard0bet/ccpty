@@ -19,12 +19,12 @@ import {
   Zap,
 } from "lucide-react";
 
-const trustBadges = ["Alibaba", "1688", "Temu", "Shein", "AliExpress"];
+const trustBadges = ["USA", "China", "Europe", "South America"];
 
 const features = [
-  { icon: MapPin, text: "Your address in China" },
   { icon: Shield, text: "Licensed customs broker" },
-  { icon: Zap, text: "Air 5-7 days / Sea 25-35 days" },
+  { icon: MapPin, text: "Strategic location in Panama" },
+  { icon: Zap, text: "Fast clearance & delivery" },
 ];
 
 const DEMO_TRACKING = {
@@ -177,7 +177,7 @@ export function Hero() {
                   className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-sm sm:px-4 sm:py-2"
                 >
                   <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
-                  <span className="text-xs font-medium text-white/90">China → Panama | Full service</span>
+                  <span className="text-xs font-medium text-white/90">World → Panama | Full customs & logistics</span>
                 </motion.div>
 
                 {/* Title */}
@@ -185,10 +185,10 @@ export function Hero() {
                   variants={itemVariants}
                   className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
                 >
-                  Import from China.
+                  Customs & Logistics
                   <br />
                   <span className="bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent">
-                    We handle the rest.
+                    Solutions in Panama.
                   </span>
                 </motion.h1>
 
@@ -197,7 +197,7 @@ export function Hero() {
                   variants={itemVariants}
                   className="mx-auto mb-8 max-w-xl text-base text-white/70 sm:text-lg md:mb-10 md:text-xl"
                 >
-                  From your supplier&apos;s door in China to your warehouse in Panama. Consolidation, freight, customs clearance, and delivery.
+                  Import, export, transit, and nationalization services. Licensed customs brokers with full logistics support from anywhere in the world.
                 </motion.p>
 
                 {/* Tabs */}
@@ -333,7 +333,7 @@ export function Hero() {
                   variants={itemVariants}
                   className="mt-12 flex flex-wrap items-center justify-center gap-2 sm:mt-16 sm:gap-3"
                 >
-                  <span className="w-full text-xs text-white/50 sm:w-auto sm:text-sm">Trusted by importers from</span>
+                  <span className="w-full text-xs text-white/50 sm:w-auto sm:text-sm">We handle cargo from</span>
                   <div className="flex flex-wrap items-center justify-center gap-2">
                     {trustBadges.map((badge, index) => (
                       <motion.span

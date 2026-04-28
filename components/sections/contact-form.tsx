@@ -27,7 +27,7 @@ import {
 import {
   contactSchema,
   type ContactFormData,
-  countryOptions,
+  originOptions,
   serviceOptions,
 } from "@/lib/schemas/contact";
 
@@ -41,10 +41,8 @@ export function ContactForm() {
       company: "",
       email: "",
       phone: "+507 ",
-      country: "panama",
-      originCity: "",
+      cargoOrigin: "usa",
       service: "not-sure",
-      volume: "",
       message: "",
       honeypot: "",
       consent: false,
@@ -219,18 +217,18 @@ export function ContactForm() {
                   <div className="grid gap-5 sm:grid-cols-2">
                     <FormField
                       control={form.control}
-                      name="country"
+                      name="cargoOrigin"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Country of destination *</FormLabel>
+                          <FormLabel>Cargo origin *</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                               <SelectTrigger>
-                                <SelectValue placeholder="Select country" />
+                                <SelectValue placeholder="Select origin" />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              {countryOptions.map((option) => (
+                              {originOptions.map((option) => (
                                 <SelectItem key={option.value} value={option.value}>
                                   {option.label}
                                 </SelectItem>
