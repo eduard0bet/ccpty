@@ -2,11 +2,16 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { Menu, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Logo } from "@/components/shared/logo";
 import { cn } from "@/lib/utils";
+
+const languages = [
+  { code: "en", label: "EN", name: "English" },
+  { code: "es", label: "ES", name: "Español" },
+];
 
 const navLinks = [
   { href: "#services", label: "Services" },
@@ -18,6 +23,12 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [currentLang, setCurrentLang] = useState("en");
+
+  const toggleLanguage = () => {
+    setCurrentLang((prev) => (prev === "en" ? "es" : "en"));
+    // TODO: Implement i18n integration
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,7 +70,21 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="hidden items-center gap-4 md:flex">
+          <div className="hidden items-center gap-3 md:flex">
+            {/* Language Switcher */}
+            <button
+              onClick={toggleLanguage}
+              className={cn(
+                "inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                isScrolled
+                  ? "text-foreground hover:bg-muted"
+                  : "text-white hover:bg-white/10"
+              )}
+            >
+              <Globe className="h-4 w-4" />
+              {currentLang.toUpperCase()}
+            </button>
+
             <Link
               href="#contact"
               className={cn(
@@ -105,6 +130,15 @@ export function Navbar() {
                 >
                   Get a quote
                 </Link>
+
+                {/* Language Switcher Mobile */}
+                <button
+                  onClick={toggleLanguage}
+                  className="mt-4 inline-flex items-center justify-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+                >
+                  <Globe className="h-4 w-4" />
+                  {currentLang === "en" ? "English" : "Español"}
+                </button>
               </div>
             </SheetContent>
           </Sheet>
