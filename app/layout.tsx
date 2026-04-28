@@ -21,18 +21,24 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Customs Clearance | China to Panama Freight Forwarding & Customs Brokerage",
-  description: "End-to-end logistics from China to Panama and Central America. Get an address in China, ship to your door, with full customs clearance handled. Air & sea freight, real-time tracking.",
-  keywords: ["customs clearance Panama", "china to panama shipping", "freight forwarder Panama", "casillero China Panama", "alibaba shipping Panama", "1688 Panama", "central america freight forwarder"],
+  title: "Customs Clearance | Customs Brokerage & Logistics in Panama",
+  description: "Full-service customs brokerage and logistics in Panama. Import, export, transit, nationalization, cold chain, and more. From anywhere in the world to Panama.",
+  keywords: ["customs clearance Panama", "customs broker Panama", "freight forwarder Panama", "import Panama", "export Panama", "logistics Panama", "nationalization Panama"],
   openGraph: {
-    title: "From China to your door in Panama — Customs Clearance",
-    description: "Your address in China + customs clearance + door delivery. One partner, one tracking number.",
+    title: "Customs & Logistics Solutions in Panama — Customs Clearance",
+    description: "Full customs brokerage and logistics services. Import, export, transit, and nationalization handled end-to-end.",
     images: ["/og-image.png"],
     locale: "en_US",
     type: "website",
   },
   twitter: { card: "summary_large_image" },
   alternates: { canonical: "https://customsclearance.com" },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover" as const,
 };
 
 export default function RootLayout({
