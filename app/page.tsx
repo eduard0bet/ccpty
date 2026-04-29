@@ -7,6 +7,7 @@ import { Routes } from "@/components/sections/routes";
 import { WhyUs } from "@/components/sections/why-us";
 import { FAQ } from "@/components/sections/faq";
 import { ContactForm } from "@/components/sections/contact-form";
+import { LoadingScreen } from "@/components/shared/loading-screen";
 import {
   getOrganizationSchema,
   getLocalBusinessSchema,
@@ -42,17 +43,19 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <Navbar />
-      <main>
-        <Hero />
-        <ServicesGrid />
-        <HowItWorks />
-        <Routes />
-        <WhyUs />
-        <FAQ />
-        <ContactForm />
-      </main>
-      <Footer />
+      <LoadingScreen>
+        <Navbar />
+        <main>
+          <Hero />
+          <ServicesGrid />
+          <HowItWorks />
+          <Routes />
+          <WhyUs />
+          <FAQ />
+          <ContactForm />
+        </main>
+        <Footer />
+      </LoadingScreen>
     </>
   );
 }
