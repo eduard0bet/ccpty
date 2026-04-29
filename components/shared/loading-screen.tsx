@@ -9,15 +9,26 @@ interface LoadingScreenProps {
 }
 
 export function LoadingScreen({ children }: LoadingScreenProps) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    const hasSeenLoading = sessionStorage.getItem("ccpty-loaded");
 
-    return () => clearTimeout(timer);
+    if (hasSeenLoading) {
+      setIsLoading(false);
+    } else {
+      setIsLoading(true);
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+        sessionStorage.setItem("ccpty-loaded", "true");
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
   }, []);
+
+  if (isLoading === null) {
+    return null;
+  }
 
   return (
     <>
@@ -29,7 +40,7 @@ export function LoadingScreen({ children }: LoadingScreenProps) {
               initial={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
-              className="fixed inset-y-0 left-0 z-[100] w-1/2 bg-white"
+              className="fixed inset-y-0 left-0 z-100 w-1/2 bg-white"
             />
 
             {/* Right curtain */}
@@ -37,7 +48,7 @@ export function LoadingScreen({ children }: LoadingScreenProps) {
               initial={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
-              className="fixed inset-y-0 right-0 z-[100] w-1/2 bg-white"
+              className="fixed inset-y-0 right-0 z-100 w-1/2 bg-white"
             />
 
             {/* Center content with logo */}
@@ -45,7 +56,7 @@ export function LoadingScreen({ children }: LoadingScreenProps) {
               initial={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 z-[101] flex items-center justify-center bg-transparent pointer-events-none"
+              className="fixed inset-0 z-101 flex items-center justify-center bg-transparent pointer-events-none"
             >
               <div className="flex flex-col items-center gap-6">
                 {/* Shield with pulse animation */}
@@ -105,7 +116,7 @@ export function LoadingScreen({ children }: LoadingScreenProps) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoading ? 0 : 1 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
+        transition={{ duration: 0.5, delay: isLoading ? 0.3 : 0 }}
       >
         {children}
       </motion.div>
