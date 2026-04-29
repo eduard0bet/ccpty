@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { motion, useInView } from "framer-motion";
 import {
@@ -76,6 +77,18 @@ export function ServicesGrid() {
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-primary/5 blur-3xl" />
         <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-primary/5 blur-3xl" />
+
+        {/* Decorative Shield */}
+        <div className="absolute -left-20 top-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none hidden lg:block">
+          <Image
+            src="/shield.svg"
+            alt=""
+            width={700}
+            height={333}
+            className="w-175 h-auto"
+            aria-hidden="true"
+          />
+        </div>
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

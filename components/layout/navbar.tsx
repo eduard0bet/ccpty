@@ -53,7 +53,7 @@ export function Navbar() {
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between md:h-20">
           <Link href="/" className="flex-shrink-0">
-            <Logo variant={isScrolled ? "dark" : "light"} />
+            <Logo variant="dark" />
           </Link>
 
           <div className="hidden items-center gap-8 md:flex">
@@ -61,12 +61,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={cn(
-                  "text-sm font-medium transition-colors",
-                  isScrolled
-                    ? "text-foreground hover:text-primary"
-                    : "text-white hover:text-white/80"
-                )}
+                className="text-sm font-medium text-foreground transition-colors hover:text-primary"
               >
                 {link.label}
               </Link>
@@ -77,12 +72,7 @@ export function Navbar() {
             <button
               onClick={toggleLanguage}
               disabled={isPending}
-              className={cn(
-                "inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors disabled:opacity-50",
-                isScrolled
-                  ? "text-foreground hover:bg-muted"
-                  : "text-white hover:bg-white/10"
-              )}
+              className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted disabled:opacity-50"
             >
               <Globe className="h-4 w-4" />
               {t("language")}
@@ -90,12 +80,7 @@ export function Navbar() {
 
             <Link
               href="#contact"
-              className={cn(
-                "inline-flex h-10 items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors",
-                isScrolled
-                  ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                  : "bg-white text-primary hover:bg-white/90"
-              )}
+              className="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
             >
               {t("getQuote")}
             </Link>
@@ -103,13 +88,10 @@ export function Navbar() {
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger
-              className={cn(
-                "inline-flex h-10 w-10 items-center justify-center rounded-lg transition-colors md:hidden",
-                isScrolled ? "hover:bg-muted" : "hover:bg-white/10"
-              )}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg transition-colors hover:bg-muted md:hidden"
               aria-label="Open menu"
             >
-              <Menu className={cn("h-6 w-6", isScrolled ? "text-foreground" : "text-white")} />
+              <Menu className="h-6 w-6 text-foreground" />
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] p-0 sm:w-[350px]">
               <div className="flex h-full flex-col">

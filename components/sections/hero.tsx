@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -112,16 +113,44 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden" id="hero">
-      {/* Background Image with Overlay */}
+    <section className="relative min-h-screen overflow-hidden bg-muted" id="hero">
+      {/* Background with modern gradient mesh */}
       <div className="absolute inset-0 z-0">
+        {/* Base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50" />
+
+        {/* Warehouse image - grayscale, subtle */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat grayscale opacity-[0.07]"
           style={{
             backgroundImage: `url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop')`,
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/90 to-primary/80" />
+
+        {/* Gradient mesh orbs for depth */}
+        <div className="absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute top-1/2 -left-40 h-[400px] w-[400px] rounded-full bg-blue-400/10 blur-3xl" />
+        <div className="absolute -bottom-20 right-1/4 h-[300px] w-[300px] rounded-full bg-primary/5 blur-2xl" />
+
+        {/* Subtle grid pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23041532' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
+
+        {/* Decorative Shield - large watermark */}
+        <div className="absolute -right-10 top-1/2 -translate-y-1/2 opacity-[0.04] pointer-events-none hidden lg:block">
+          <Image
+            src="/shield.svg"
+            alt=""
+            width={800}
+            height={380}
+            className="w-200 h-auto"
+            aria-hidden="true"
+          />
+        </div>
       </div>
 
       {/* Floating Animated Elements - Hidden on mobile/tablet */}
@@ -131,8 +160,8 @@ export function Hero() {
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-[20%] right-[10%] hidden xl:block"
         >
-          <div className="rounded-2xl bg-white/10 p-5 backdrop-blur-sm border border-white/10">
-            <Plane className="h-10 w-10 text-white/70" />
+          <div className="rounded-2xl bg-white p-5 shadow-xl shadow-primary/10 border border-border">
+            <Plane className="h-10 w-10 text-primary" />
           </div>
         </motion.div>
 
@@ -141,8 +170,8 @@ export function Hero() {
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           className="absolute bottom-[30%] left-[5%] hidden xl:block"
         >
-          <div className="rounded-2xl bg-white/10 p-5 backdrop-blur-sm border border-white/10">
-            <Ship className="h-10 w-10 text-white/70" />
+          <div className="rounded-2xl bg-white p-5 shadow-xl shadow-primary/10 border border-border">
+            <Ship className="h-10 w-10 text-primary" />
           </div>
         </motion.div>
 
@@ -151,8 +180,8 @@ export function Hero() {
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-[45%] right-[3%] hidden xl:block"
         >
-          <div className="rounded-2xl bg-white/10 p-4 backdrop-blur-sm border border-white/10">
-            <Package className="h-8 w-8 text-white/70" />
+          <div className="rounded-2xl bg-white p-4 shadow-lg shadow-primary/10 border border-border">
+            <Package className="h-8 w-8 text-primary" />
           </div>
         </motion.div>
 
@@ -161,8 +190,8 @@ export function Hero() {
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           className="absolute bottom-[25%] right-[15%] hidden xl:block"
         >
-          <div className="rounded-2xl bg-white/10 p-4 backdrop-blur-sm border border-white/10">
-            <Truck className="h-8 w-8 text-white/70" />
+          <div className="rounded-2xl bg-white p-4 shadow-lg shadow-primary/10 border border-border">
+            <Truck className="h-8 w-8 text-primary" />
           </div>
         </motion.div>
       </div>
@@ -183,16 +212,16 @@ export function Hero() {
                 {/* Badge */}
                 <motion.div
                   variants={itemVariants}
-                  className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-sm sm:px-4 sm:py-2"
+                  className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 shadow-lg shadow-primary/30 sm:px-5 sm:py-2.5"
                 >
                   <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
-                  <span className="text-xs font-medium text-white/90">{t("badge")}</span>
+                  <span className="text-xs font-semibold text-white sm:text-sm">{t("badge")}</span>
                 </motion.div>
 
                 {/* Title */}
                 <motion.h1
                   variants={itemVariants}
-                  className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+                  className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
                 >
                   {t("title")}
                 </motion.h1>
@@ -200,20 +229,20 @@ export function Hero() {
                 {/* Subtitle */}
                 <motion.p
                   variants={itemVariants}
-                  className="mx-auto mb-8 max-w-xl text-base text-white/70 sm:text-lg md:mb-10 md:text-xl"
+                  className="mx-auto mb-8 max-w-xl text-base text-foreground/70 sm:text-lg md:mb-10 md:text-xl"
                 >
                   {t("subtitle")}
                 </motion.p>
 
                 {/* Tabs */}
                 <motion.div variants={itemVariants} className="mx-auto mb-6 w-full max-w-md">
-                  <div className="inline-flex w-full rounded-xl border border-white/20 bg-white/10 p-1 backdrop-blur-sm sm:w-auto">
+                  <div className="inline-flex w-full rounded-xl border border-border bg-white p-1 shadow-sm sm:w-auto">
                     <button
                       onClick={() => setActiveTab("cta")}
                       className={`flex-1 rounded-lg px-4 py-2.5 text-sm font-medium transition-all sm:flex-none sm:px-6 ${
                         activeTab === "cta"
-                          ? "bg-white text-primary shadow-lg"
-                          : "text-white/70 hover:text-white"
+                          ? "bg-primary text-white shadow-lg"
+                          : "text-foreground/70 hover:text-foreground"
                       }`}
                     >
                       {t("cta")}
@@ -222,8 +251,8 @@ export function Hero() {
                       onClick={() => setActiveTab("tracking")}
                       className={`flex-1 rounded-lg px-4 py-2.5 text-sm font-medium transition-all sm:flex-none sm:px-6 ${
                         activeTab === "tracking"
-                          ? "bg-white text-primary shadow-lg"
-                          : "text-white/70 hover:text-white"
+                          ? "bg-primary text-white shadow-lg"
+                          : "text-foreground/70 hover:text-foreground"
                       }`}
                     >
                       <span className="flex items-center justify-center gap-2">
@@ -250,9 +279,9 @@ export function Hero() {
                         {features.map((feature) => (
                           <div
                             key={feature.text}
-                            className="flex items-center gap-2 text-sm text-white/80"
+                            className="flex items-center gap-2 text-sm text-foreground/80"
                           >
-                            <feature.icon className="h-4 w-4 text-white/60" />
+                            <feature.icon className="h-4 w-4 text-primary" />
                             <span>{feature.text}</span>
                           </div>
                         ))}
@@ -262,14 +291,14 @@ export function Hero() {
                       <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
                         <Link
                           href="#contact"
-                          className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-white px-8 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all hover:bg-white/90 hover:shadow-xl sm:w-auto sm:text-lg"
+                          className="group inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-primary px-8 text-base font-semibold text-white shadow-xl shadow-primary/40 transition-all hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/50 sm:w-auto sm:text-lg"
                         >
                           {t("cta")}
-                          <ArrowRight className="h-5 w-5" />
+                          <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                         </Link>
                         <Link
                           href="#services"
-                          className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl border border-white/30 px-8 text-base font-medium text-white transition-all hover:bg-white/10 sm:w-auto"
+                          className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl border-2 border-primary/20 bg-white/80 px-8 text-base font-medium text-primary backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-white sm:w-auto"
                         >
                           {t("secondaryCta")}
                         </Link>
@@ -287,14 +316,14 @@ export function Hero() {
                       {/* Search Box */}
                       <div className="flex flex-col gap-3 sm:flex-row">
                         <div className="relative flex-1">
-                          <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/40" />
+                          <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-foreground/40" />
                           <input
                             type="text"
                             placeholder={tTrack("placeholder")}
                             value={trackingNumber}
                             onChange={(e) => setTrackingNumber(e.target.value)}
                             onKeyDown={handleKeyPress}
-                            className="h-14 w-full rounded-xl border border-white/20 bg-white/10 pl-12 pr-4 font-mono text-base text-white placeholder:text-white/40 backdrop-blur-sm transition-all focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20 sm:text-lg"
+                            className="h-14 w-full rounded-xl border border-border bg-white pl-12 pr-4 font-mono text-base text-foreground placeholder:text-foreground/40 shadow-sm transition-all focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 sm:text-lg"
                           />
                         </div>
                         <motion.button
@@ -302,12 +331,12 @@ export function Hero() {
                           whileTap={{ scale: 0.98 }}
                           onClick={handleSearch}
                           disabled={isSearching}
-                          className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-white px-6 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all hover:bg-white/90 disabled:opacity-70 sm:px-8 sm:text-lg"
+                          className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-primary px-6 text-base font-semibold text-white shadow-lg shadow-primary/30 transition-all hover:bg-primary/90 disabled:opacity-70 sm:px-8 sm:text-lg"
                         >
                           {isSearching ? (
                             <>
                               <motion.div
-                                className="h-5 w-5 rounded-full border-2 border-primary/30 border-t-primary"
+                                className="h-5 w-5 rounded-full border-2 border-white/30 border-t-white"
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                               />
@@ -325,7 +354,7 @@ export function Hero() {
                       {/* Demo link */}
                       <button
                         onClick={handleDemo}
-                        className="mt-4 text-sm text-white/50 transition-colors hover:text-white"
+                        className="mt-4 text-sm text-foreground/50 transition-colors hover:text-primary"
                       >
                         No tracking number? <span className="underline">Try a demo</span>
                       </button>
@@ -336,17 +365,17 @@ export function Hero() {
                 {/* Trust badges */}
                 <motion.div
                   variants={itemVariants}
-                  className="mt-12 flex flex-wrap items-center justify-center gap-2 sm:mt-16 sm:gap-3"
+                  className="mt-12 flex flex-wrap items-center justify-center gap-3 sm:mt-16 sm:gap-4"
                 >
-                  <span className="w-full text-xs text-white/50 sm:w-auto sm:text-sm">{t("trust.title")}</span>
+                  <span className="w-full text-xs font-medium text-foreground/60 sm:w-auto sm:text-sm">{t("trust.title")}</span>
                   <div className="flex flex-wrap items-center justify-center gap-2">
                     {trustBadges.map((badge, index) => (
                       <motion.span
                         key={badge}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.8 + index * 0.1 }}
-                        className="rounded-md bg-white/10 px-2 py-1 text-xs font-medium text-white/80 backdrop-blur-sm sm:rounded-lg sm:px-3 sm:py-1.5"
+                        className="rounded-lg border border-border bg-white px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm sm:px-4 sm:py-2 sm:text-sm"
                       >
                         {badge}
                       </motion.span>
@@ -366,15 +395,15 @@ export function Hero() {
               id="tracking"
             >
               {/* Sticky Header */}
-              <div className="sticky top-16 z-30 -mx-4 mb-4 border-b border-white/10 bg-transparent px-4 py-3 backdrop-blur-sm rounded-2xl sm:top-20 sm:-mx-6 sm:mb-6 sm:px-6 sm:py-4">
+              <div className="sticky top-16 z-30 -mx-4 mb-4 border-b border-border bg-white/80 px-4 py-3 backdrop-blur-sm rounded-2xl sm:top-20 sm:-mx-6 sm:mb-6 sm:px-6 sm:py-4">
                 <div className="mx-auto flex max-w-4xl items-center gap-3 sm:gap-4">
                   <div className="flex flex-1 items-center gap-2 sm:gap-3">
-                    <div className="hidden h-10 w-10 items-center justify-center rounded-lg bg-white sm:flex sm:h-12 sm:w-12 sm:rounded-xl">
-                      <Package className="h-5 w-5 text-primary sm:h-6 sm:w-6" />
+                    <div className="hidden h-10 w-10 items-center justify-center rounded-lg bg-primary sm:flex sm:h-12 sm:w-12 sm:rounded-xl">
+                      <Package className="h-5 w-5 text-white sm:h-6 sm:w-6" />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-[10px] text-white/60 sm:text-xs">Tracking</p>
-                      <p className="truncate font-mono text-xs font-bold text-white sm:text-base">
+                      <p className="text-[10px] text-foreground/60 sm:text-xs">Tracking</p>
+                      <p className="truncate font-mono text-xs font-bold text-foreground sm:text-base">
                         {DEMO_TRACKING.trackingNumber}
                       </p>
                     </div>
@@ -382,21 +411,21 @@ export function Hero() {
 
                   <div className="hidden max-w-xs flex-1 md:block">
                     <div className="relative">
-                      <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/50" />
+                      <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/50" />
                       <input
                         type="text"
                         placeholder="Search another..."
                         value={trackingNumber}
                         onChange={(e) => setTrackingNumber(e.target.value)}
                         onKeyDown={handleKeyPress}
-                        className="h-10 w-full rounded-lg border border-white/20 bg-white/10 pl-9 pr-4 text-sm text-white placeholder:text-white/50 focus:border-white/40 focus:outline-none"
+                        className="h-10 w-full rounded-lg border border-border bg-white pl-9 pr-4 text-sm text-foreground placeholder:text-foreground/50 focus:border-primary focus:outline-none"
                       />
                     </div>
                   </div>
 
                   <button
                     onClick={handleClose}
-                    className="shrink-0 rounded-lg p-2 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                    className="shrink-0 rounded-lg p-2 text-foreground/70 transition-colors hover:bg-muted hover:text-foreground"
                   >
                     <X className="h-5 w-5" />
                   </button>
@@ -410,24 +439,24 @@ export function Hero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="rounded-lg border border-white/20 bg-white/10 p-4 backdrop-blur-md sm:rounded-xl sm:p-5"
+                  className="rounded-lg border border-border bg-white p-4 shadow-sm sm:rounded-xl sm:p-5"
                 >
                   <div className="grid grid-cols-2 gap-4 text-sm sm:flex sm:flex-wrap sm:gap-6">
                     <div>
-                      <p className="mb-0.5 text-[10px] text-white/50 sm:text-xs">Origin</p>
-                      <p className="text-xs font-medium text-white sm:text-sm">{DEMO_TRACKING.origin}</p>
+                      <p className="mb-0.5 text-[10px] text-foreground/50 sm:text-xs">Origin</p>
+                      <p className="text-xs font-medium text-foreground sm:text-sm">{DEMO_TRACKING.origin}</p>
                     </div>
                     <div>
-                      <p className="mb-0.5 text-[10px] text-white/50 sm:text-xs">Destination</p>
-                      <p className="text-xs font-medium text-white sm:text-sm">{DEMO_TRACKING.destination}</p>
+                      <p className="mb-0.5 text-[10px] text-foreground/50 sm:text-xs">Destination</p>
+                      <p className="text-xs font-medium text-foreground sm:text-sm">{DEMO_TRACKING.destination}</p>
                     </div>
                     <div>
-                      <p className="mb-0.5 text-[10px] text-white/50 sm:text-xs">Weight</p>
-                      <p className="text-xs font-medium text-white sm:text-sm">{DEMO_TRACKING.weight}</p>
+                      <p className="mb-0.5 text-[10px] text-foreground/50 sm:text-xs">Weight</p>
+                      <p className="text-xs font-medium text-foreground sm:text-sm">{DEMO_TRACKING.weight}</p>
                     </div>
                     <div className="sm:ml-auto">
-                      <p className="mb-0.5 text-[10px] text-white/50 sm:text-xs">Estimated Delivery</p>
-                      <p className="text-xs font-bold text-white sm:text-sm">{DEMO_TRACKING.estimatedDelivery}</p>
+                      <p className="mb-0.5 text-[10px] text-foreground/50 sm:text-xs">Estimated Delivery</p>
+                      <p className="text-xs font-bold text-primary sm:text-sm">{DEMO_TRACKING.estimatedDelivery}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -437,12 +466,12 @@ export function Hero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="rounded-lg border border-white/20 bg-white/10 p-4 backdrop-blur-md sm:rounded-xl sm:p-5"
+                  className="rounded-lg border border-border bg-white p-4 shadow-sm sm:rounded-xl sm:p-5"
                 >
-                  <h3 className="mb-3 flex items-center gap-2 text-xs font-semibold text-white sm:mb-4 sm:text-sm">
-                    <Clock className="h-3.5 w-3.5 text-white/70 sm:h-4 sm:w-4" />
+                  <h3 className="mb-3 flex items-center gap-2 text-xs font-semibold text-foreground sm:mb-4 sm:text-sm">
+                    <Clock className="h-3.5 w-3.5 text-primary sm:h-4 sm:w-4" />
                     Tracking History
-                    <span className="text-[10px] font-normal text-white/50 sm:text-xs">
+                    <span className="text-[10px] font-normal text-foreground/50 sm:text-xs">
                       ({DEMO_TRACKING.steps.length} events)
                     </span>
                   </h3>
@@ -463,7 +492,7 @@ export function Hero() {
                           {!isLast && (
                             <div
                               className={`absolute left-[14px] top-8 h-[calc(100%-20px)] w-0.5 sm:left-[18px] sm:top-10 sm:h-[calc(100%-24px)] ${
-                                step.status === "completed" ? "bg-white/50" : "bg-white/20"
+                                step.status === "completed" ? "bg-primary/50" : "bg-border"
                               }`}
                             />
                           )}
@@ -472,25 +501,25 @@ export function Hero() {
                             <div
                               className={`flex h-7 w-7 items-center justify-center rounded-full sm:h-9 sm:w-9 ${
                                 step.status === "completed"
-                                  ? "bg-white"
+                                  ? "bg-primary"
                                   : step.status === "current"
-                                  ? "border-2 border-white bg-white/20"
-                                  : "border border-white/30 bg-white/10"
+                                  ? "border-2 border-primary bg-primary/20"
+                                  : "border border-border bg-muted"
                               }`}
                             >
                               <IconComponent
                                 className={`h-3 w-3 sm:h-4 sm:w-4 ${
                                   step.status === "completed"
-                                    ? "text-primary"
-                                    : step.status === "current"
                                     ? "text-white"
-                                    : "text-white/50"
+                                    : step.status === "current"
+                                    ? "text-primary"
+                                    : "text-foreground/50"
                                 }`}
                               />
                             </div>
                             {step.status === "current" && (
                               <motion.div
-                                className="absolute inset-0 rounded-full border-2 border-white"
+                                className="absolute inset-0 rounded-full border-2 border-primary"
                                 animate={{ scale: [1, 1.4, 1], opacity: [0.5, 0, 0.5] }}
                                 transition={{ duration: 2, repeat: Infinity }}
                               />
@@ -502,22 +531,22 @@ export function Hero() {
                               <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                                 <h4
                                   className={`text-xs font-medium sm:text-sm ${
-                                    step.status === "pending" ? "text-white/50" : "text-white"
+                                    step.status === "pending" ? "text-foreground/50" : "text-foreground"
                                   }`}
                                 >
                                   {step.title}
                                 </h4>
                                 {step.status === "current" && (
-                                  <span className="rounded border border-white/30 bg-white/10 px-1 py-0.5 text-[8px] text-white sm:px-1.5 sm:text-[10px]">
+                                  <span className="rounded border border-primary/30 bg-primary/10 px-1 py-0.5 text-[8px] text-primary sm:px-1.5 sm:text-[10px]">
                                     Current
                                   </span>
                                 )}
                               </div>
-                              <div className="text-[10px] text-white/50 sm:text-xs">
+                              <div className="text-[10px] text-foreground/50 sm:text-xs">
                                 {step.date} {step.time && `• ${step.time}`}
                               </div>
                             </div>
-                            <p className="mt-0.5 text-[10px] text-white/40 sm:text-xs">{step.location}</p>
+                            <p className="mt-0.5 text-[10px] text-foreground/40 sm:text-xs">{step.location}</p>
                           </div>
                         </motion.div>
                       );
@@ -534,7 +563,7 @@ export function Hero() {
                 >
                   <button
                     onClick={handleClose}
-                    className="flex w-full items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-white/20"
+                    className="flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-white px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
                   >
                     <Search className="h-4 w-4" />
                     Search another shipment
@@ -551,7 +580,7 @@ export function Hero() {
         <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
           <path
             d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
-            fill="white"
+            className="fill-white"
           />
         </svg>
       </div>

@@ -35,11 +35,11 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-primary text-white/70">
+    <footer className="bg-white text-foreground/70 border-t border-border">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <Logo variant="light" className="mb-4" />
+            <Logo variant="dark" className="mb-4" />
             <p className="mb-6 text-sm">
               {t("description")}
             </p>
@@ -49,7 +49,7 @@ export function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="text-white/60 transition-colors hover:text-white"
+                  className="text-foreground/60 transition-colors hover:text-primary"
                 >
                   <social.icon className="h-5 w-5" />
                 </a>
@@ -58,7 +58,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">
               {t("services")}
             </h4>
             <ul className="space-y-3">
@@ -66,7 +66,7 @@ export function Footer() {
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    className="text-sm transition-colors hover:text-white"
+                    className="text-sm transition-colors hover:text-primary"
                   >
                     {item.label}
                   </Link>
@@ -76,7 +76,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">
               {t("company")}
             </h4>
             <ul className="space-y-3">
@@ -84,7 +84,7 @@ export function Footer() {
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    className="text-sm transition-colors hover:text-white"
+                    className="text-sm transition-colors hover:text-primary"
                   >
                     {item.label}
                   </Link>
@@ -94,44 +94,44 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">
               {t("contact")}
             </h4>
             <div className="space-y-4 text-sm">
               <div>
-                <p className="font-medium text-white">Customs Clearance, S.A.</p>
+                <p className="font-medium text-foreground">Customs Clearance, S.A.</p>
                 <p>Panama City, Panama</p>
               </div>
               <div>
                 <p>
-                  <span className="text-white">Phone:</span> +507 XXXX-XXXX
+                  <span className="text-foreground">Phone:</span> +507 XXXX-XXXX
                 </p>
                 <p>
-                  <span className="text-white">WhatsApp:</span> +507 XXXX-XXXX
+                  <span className="text-foreground">WhatsApp:</span> +507 XXXX-XXXX
                 </p>
                 <p>
-                  <span className="text-white">Email:</span>{" "}
+                  <span className="text-foreground">Email:</span>{" "}
                   hello@customsclearance.com
                 </p>
               </div>
-              <p className="text-white/50">Mon–Fri, 8:00–18:00 (GMT-5)</p>
+              <p className="text-foreground/50">Mon–Fri, 8:00–18:00 (GMT-5)</p>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-8">
+        <div className="mt-12 border-t border-border pt-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <p className="text-sm">
               © 2026 Customs Clearance, S.A. {t("rights")}
             </p>
             <div className="flex gap-6 text-sm">
-              <Link href="/terms" className="hover:text-white">
+              <Link href="/terms" className="hover:text-primary">
                 {t("terms")}
               </Link>
-              <Link href="/privacy" className="hover:text-white">
+              <Link href="/privacy" className="hover:text-primary">
                 {t("privacy")}
               </Link>
-              <span className="text-white/50">Built in Panama</span>
+              <span className="text-foreground/50">Built in Panama</span>
             </div>
           </div>
         </div>

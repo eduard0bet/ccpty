@@ -23,18 +23,18 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Customs Clearance | Customs Brokerage & Logistics in Panama",
-  description: "Full-service customs brokerage and logistics in Panama. Import, export, transit, nationalization, cold chain, and more. From anywhere in the world to Panama.",
-  keywords: ["customs clearance Panama", "customs broker Panama", "freight forwarder Panama", "import Panama", "export Panama", "logistics Panama", "nationalization Panama"],
+  title: "Customs Clearance PTY | E-Commerce Customs & Logistics in Panama",
+  description: "E-Commerce customs and logistics solutions in Panama. Import, export, transit, nationalization, cold chain, and more. From anywhere in the world to Panama.",
+  keywords: ["e-commerce customs Panama", "customs clearance Panama", "customs broker Panama", "freight forwarder Panama", "import Panama", "export Panama", "logistics Panama", "e-commerce logistics Panama"],
   openGraph: {
-    title: "Customs & Logistics Solutions in Panama — Customs Clearance",
-    description: "Full customs brokerage and logistics services. Import, export, transit, and nationalization handled end-to-end.",
+    title: "E-Commerce Customs & Logistics Solutions in Panama — Customs Clearance PTY",
+    description: "E-Commerce customs and logistics services. Import, export, transit, and nationalization handled end-to-end.",
     images: ["/og-image.png"],
     locale: "en_US",
     type: "website",
   },
   twitter: { card: "summary_large_image" },
-  alternates: { canonical: "https://customsclearance.com" },
+  alternates: { canonical: "https://customsclearancepty.com" },
 };
 
 export const viewport = {
