@@ -2,28 +2,32 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface LoadingScreenProps {
   children: React.ReactNode;
 }
 
-const services = [
-  "Nationalizations",
-  "Re-exports & Transit",
-  "Sea Freight",
-  "Air Freight",
-  "Cold Chain",
-  "Custody of Valuables",
-  "Live Animals",
-];
+const serviceKeys = [
+  "nationalizations",
+  "reexports",
+  "seaFreight",
+  "airFreight",
+  "coldChain",
+  "custody",
+  "liveAnimals",
+] as const;
 
 let hasShownLoadingThisSession = false;
 
 export function LoadingScreen({ children }: LoadingScreenProps) {
+  const t = useTranslations("services.items");
   const [isLoading, setIsLoading] = useState(false);
   const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
   const hasInitialized = useRef(false);
+
+  const services = serviceKeys.map((key) => t(`${key}.title`));
 
   useEffect(() => {
     if (hasInitialized.current) return;
