@@ -8,10 +8,21 @@ interface LoadingScreenProps {
   children: React.ReactNode;
 }
 
+const services = [
+  "Nationalizations",
+  "Re-exports & Transit",
+  "Sea Freight",
+  "Air Freight",
+  "Cold Chain",
+  "Custody of Valuables",
+  "Live Animals",
+];
+
 let hasShownLoadingThisSession = false;
 
 export function LoadingScreen({ children }: LoadingScreenProps) {
   const [isLoading, setIsLoading] = useState(false);
+  const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
   const hasInitialized = useRef(false);
 
   useEffect(() => {
@@ -23,10 +34,20 @@ export function LoadingScreen({ children }: LoadingScreenProps) {
       setIsLoading(true);
       const timer = setTimeout(() => {
         setIsLoading(false);
-      }, 3000);
+      }, 6000);
       return () => clearTimeout(timer);
     }
   }, []);
+
+  useEffect(() => {
+    if (!isLoading) return;
+
+    const interval = setInterval(() => {
+      setCurrentServiceIndex((prev) => (prev + 1) % services.length);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [isLoading]);
 
   return (
     <>
@@ -56,8 +77,8 @@ export function LoadingScreen({ children }: LoadingScreenProps) {
               transition={{ duration: 0.3 }}
               className="fixed inset-0 z-101 flex items-center justify-center bg-transparent pointer-events-none"
             >
-              <div className="flex flex-col items-center gap-6">
-                {/* Shield with pulse animation */}
+              <div className="flex flex-col items-center gap-8">
+                {/* Big logo with pulse animation */}
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
@@ -65,44 +86,50 @@ export function LoadingScreen({ children }: LoadingScreenProps) {
                   className="relative"
                 >
                   <motion.div
-                    animate={{ scale: [1, 1.05, 1] }}
+                    animate={{ scale: [1, 1.02, 1] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                   >
                     <Image
-                      src="/shield.svg"
+                      src="/logo-big.svg"
                       alt="Customs Clearance PTY"
-                      width={120}
-                      height={57}
-                      className="h-20 w-auto"
+                      width={400}
+                      height={140}
+                      className="h-32 w-auto sm:h-40"
                       priority
                     />
                   </motion.div>
 
                   {/* Glow effect */}
                   <motion.div
-                    className="absolute inset-0 -z-10 blur-2xl"
-                    animate={{ opacity: [0.3, 0.6, 0.3] }}
+                    className="absolute inset-0 -z-10 blur-3xl"
+                    animate={{ opacity: [0.2, 0.4, 0.2] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                   >
                     <Image
-                      src="/shield.svg"
+                      src="/logo-big.svg"
                       alt=""
-                      width={120}
-                      height={57}
-                      className="h-20 w-auto opacity-50"
+                      width={400}
+                      height={140}
+                      className="h-32 w-auto sm:h-40 opacity-50"
                       aria-hidden="true"
                     />
                   </motion.div>
                 </motion.div>
 
-                {/* Loading bar */}
-                <div className="h-1 w-32 overflow-hidden rounded-full bg-gray-200">
-                  <motion.div
-                    className="h-full bg-primary"
-                    initial={{ width: "0%" }}
-                    animate={{ width: "100%" }}
-                    transition={{ duration: 2.5, ease: "easeInOut" }}
-                  />
+                {/* Rotating services text */}
+                <div className="h-12 flex items-center justify-center overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={currentServiceIndex}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-lg sm:text-xl font-bold text-primary/70 tracking-wide"
+                    >
+                      {services[currentServiceIndex]}
+                    </motion.span>
+                  </AnimatePresence>
                 </div>
               </div>
             </motion.div>
