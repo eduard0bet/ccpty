@@ -1,33 +1,36 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useTransition } from "react";
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import { Menu, Globe } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Logo } from "@/components/shared/logo";
 import { cn } from "@/lib/utils";
-
-const languages = [
-  { code: "en", label: "EN", name: "English" },
-  { code: "es", label: "ES", name: "Español" },
-];
-
-const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#how-it-works", label: "How it works" },
-  { href: "#routes", label: "Routes" },
-  { href: "#contact", label: "Contact" },
-];
+import { setLocale } from "@/app/actions/locale";
+import { type Locale, localeNames } from "@/i18n/config";
 
 export function Navbar() {
+  const t = useTranslations("nav");
+  const locale = useLocale() as Locale;
+  const [isPending, startTransition] = useTransition();
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState("en");
+
+  const navLinks = [
+    { href: "#services", label: t("services") },
+    { href: "#how-it-works", label: t("howItWorks") },
+    { href: "#routes", label: t("routes") },
+    { href: "#contact", label: t("contact") },
+  ];
 
   const toggleLanguage = () => {
-    setCurrentLang((prev) => (prev === "en" ? "es" : "en"));
-    // TODO: Implement i18n integration
+    const newLocale: Locale = locale === "en" ? "es" : "en";
+    startTransition(async () => {
+      await setLocale(newLocale);
+      window.location.reload();
+    });
   };
 
   useEffect(() => {
@@ -71,18 +74,18 @@ export function Navbar() {
           </div>
 
           <div className="hidden items-center gap-3 md:flex">
-            {/* Language Switcher */}
             <button
               onClick={toggleLanguage}
+              disabled={isPending}
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                "inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors disabled:opacity-50",
                 isScrolled
                   ? "text-foreground hover:bg-muted"
                   : "text-white hover:bg-white/10"
               )}
             >
               <Globe className="h-4 w-4" />
-              {currentLang.toUpperCase()}
+              {t("language")}
             </button>
 
             <Link
@@ -94,7 +97,7 @@ export function Navbar() {
                   : "bg-white text-primary hover:bg-white/90"
               )}
             >
-              Get a quote
+              {t("getQuote")}
             </Link>
           </div>
 
@@ -110,12 +113,10 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] p-0 sm:w-[350px]">
               <div className="flex h-full flex-col">
-                {/* Header */}
                 <div className="border-b border-border px-6 py-5">
                   <Logo variant="dark" />
                 </div>
 
-                {/* Navigation Links */}
                 <nav className="flex-1 px-4 py-4">
                   <ul className="space-y-1">
                     {navLinks.map((link) => (
@@ -132,22 +133,22 @@ export function Navbar() {
                   </ul>
                 </nav>
 
-                {/* Footer Actions */}
                 <div className="border-t border-border p-4 space-y-3">
                   <Link
                     href="#contact"
                     onClick={() => setIsOpen(false)}
                     className="flex h-12 w-full items-center justify-center rounded-lg bg-primary text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                   >
-                    Get a quote
+                    {t("getQuote")}
                   </Link>
 
                   <button
                     onClick={toggleLanguage}
-                    className="flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-border text-sm font-medium text-foreground transition-colors hover:bg-muted"
+                    disabled={isPending}
+                    className="flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-border text-sm font-medium text-foreground transition-colors hover:bg-muted disabled:opacity-50"
                   >
                     <Globe className="h-4 w-4" />
-                    {currentLang === "en" ? "English" : "Español"}
+                    {localeNames[locale]}
                   </button>
                 </div>
               </div>

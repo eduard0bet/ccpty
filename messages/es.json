@@ -1,0 +1,210 @@
+{
+  "metadata": {
+    "title": "Customs Clearance | Agencia Aduanera y Logística en Panamá",
+    "description": "Servicios completos de agencia aduanera y logística en Panamá. Importación, exportación, tránsito, nacionalización, cadena de frío y más."
+  },
+  "nav": {
+    "services": "Servicios",
+    "howItWorks": "Cómo funciona",
+    "routes": "Rutas",
+    "contact": "Contacto",
+    "getQuote": "Cotizar",
+    "language": "ES"
+  },
+  "hero": {
+    "badge": "Mundo → Panamá | Aduanas y logística",
+    "title": "Soluciones Aduaneras y Logísticas en Panamá.",
+    "subtitle": "Desde importación y exportación hasta tránsito y nacionalización — nos encargamos de todo para que tu carga llegue sin demoras.",
+    "cta": "Cotizar",
+    "secondaryCta": "Rastrear envío",
+    "features": {
+      "licensed": "Agente aduanero autorizado",
+      "strategic": "Ubicación estratégica",
+      "fast": "Despacho rápido"
+    },
+    "trust": {
+      "title": "Importadores confían en nosotros desde",
+      "usa": "EE.UU.",
+      "china": "China",
+      "europe": "Europa",
+      "southAmerica": "Sudamérica"
+    }
+  },
+  "services": {
+    "badge": "Nuestros Servicios",
+    "title": "Soluciones completas de aduanas y logística.",
+    "subtitle": "Desde la documentación hasta la entrega, manejamos cada paso de tus operaciones de comercio internacional.",
+    "cta": "Solicitar cotización",
+    "items": {
+      "customsClearance": {
+        "title": "Despacho Aduanero",
+        "description": "Documentación completa de importación y exportación, clasificación arancelaria y cumplimiento regulatorio."
+      },
+      "nationalizations": {
+        "title": "Nacionalizaciones",
+        "description": "Proceso completo de nacionalización para mercancías que ingresan al territorio aduanero de Panamá."
+      },
+      "reexports": {
+        "title": "Re-exportaciones y Tránsito",
+        "description": "Importaciones temporales, procedimientos de re-exportación y gestión de carga en tránsito."
+      },
+      "seaFreight": {
+        "title": "Flete Marítimo",
+        "description": "Carga FCL y LCL desde cualquier puerto del mundo hacia Panamá."
+      },
+      "airFreight": {
+        "title": "Flete Aéreo",
+        "description": "Servicios de carga aérea express y estándar con manejo aduanero completo."
+      },
+      "coldChain": {
+        "title": "Cadena de Frío",
+        "description": "Logística con temperatura controlada para perecederos y farmacéuticos."
+      },
+      "custody": {
+        "title": "Custodia de Valores",
+        "description": "Manejo seguro y almacenamiento de carga de alto valor y sensible."
+      },
+      "liveAnimals": {
+        "title": "Animales Vivos",
+        "description": "Permisos especializados y logística para importación y exportación de animales vivos."
+      }
+    }
+  },
+  "howItWorks": {
+    "badge": "Proceso Simple",
+    "title": "Cómo funciona.",
+    "subtitle": "De la cotización a la entrega en cinco simples pasos.",
+    "cta": "Comenzar ahora",
+    "steps": {
+      "quote": {
+        "title": "Solicita cotización",
+        "description": "Cuéntanos sobre tu carga y te daremos una cotización detallada."
+      },
+      "logistics": {
+        "title": "Coordinamos la logística",
+        "description": "Organizamos la recolección, flete y toda la documentación."
+      },
+      "arrival": {
+        "title": "La carga llega a Panamá",
+        "description": "Recibimos tu envío y comenzamos el proceso aduanero."
+      },
+      "clearance": {
+        "title": "Despacho aduanero",
+        "description": "Nacionalización completa, permisos y cumplimiento regulatorio."
+      },
+      "distribution": {
+        "title": "Listo para distribución",
+        "description": "Carga liberada y lista para retiro o entrega de última milla."
+      }
+    }
+  },
+  "routes": {
+    "badge": "Cobertura Global",
+    "title": "Desde cualquier lugar hacia Panamá.",
+    "subtitle": "Manejamos aduanas y logística para carga que llega desde todas las principales rutas comerciales del mundo.",
+    "cta": "¡Déjalo en nuestras manos!",
+    "legend": {
+      "origin": "Origen",
+      "panama": "Panamá"
+    },
+    "origins": {
+      "usa": "Estados Unidos",
+      "china": "China",
+      "europe": "Europa",
+      "southAmerica": "Sudamérica"
+    },
+    "services": {
+      "imports": {
+        "title": "Importaciones",
+        "description": "Despacho aduanero completo para mercancías que ingresan a Panamá"
+      },
+      "exports": {
+        "title": "Exportaciones",
+        "description": "Documentación y cumplimiento para carga de salida"
+      },
+      "reexports": {
+        "title": "Re-exportaciones",
+        "description": "Procedimientos de importación temporal y re-exportación"
+      },
+      "transit": {
+        "title": "Tránsito",
+        "description": "Carga en tránsito a través de las zonas francas de Panamá"
+      }
+    }
+  },
+  "contact": {
+    "badge": "Comenzar",
+    "title": "Cuéntanos sobre tu envío.",
+    "subtitle": "Te responderemos con una cotización y ruta recomendada en 24 horas.",
+    "form": {
+      "fullName": "Nombre completo",
+      "company": "Empresa",
+      "email": "Correo electrónico",
+      "phone": "Teléfono / WhatsApp",
+      "cargoOrigin": "Origen de la carga",
+      "selectOrigin": "Seleccionar origen",
+      "service": "Servicio de interés",
+      "selectService": "Seleccionar servicio",
+      "message": "Mensaje",
+      "messagePlaceholder": "Describe tus necesidades de envío, tipos de productos, frecuencia, etc.",
+      "consent": "Acepto la",
+      "privacyPolicy": "política de privacidad",
+      "consentEnd": "y consiento ser contactado.",
+      "submit": "Enviar mensaje",
+      "sending": "Enviando...",
+      "required": "*"
+    },
+    "origins": {
+      "usa": "Estados Unidos",
+      "china": "China",
+      "europe": "Europa",
+      "southAmerica": "Sudamérica",
+      "centralAmerica": "Centroamérica",
+      "other": "Otro"
+    },
+    "services": {
+      "import": "Importación / Despacho Aduanero",
+      "export": "Exportación",
+      "reexport": "Re-exportación",
+      "transit": "Tránsito",
+      "nationalization": "Nacionalización",
+      "coldChain": "Cadena de Frío / Perecederos",
+      "liveAnimals": "Animales Vivos",
+      "custody": "Custodia de Valores",
+      "notSure": "No estoy seguro / Otro"
+    },
+    "success": {
+      "title": "¡Mensaje enviado!",
+      "message": "Gracias por tu consulta. Te responderemos en 24 horas con una cotización y ruta recomendada.",
+      "another": "Enviar otro mensaje"
+    },
+    "error": "Algo salió mal. Por favor intenta de nuevo o contáctanos directamente.",
+    "info": {
+      "title": "Contacto directo",
+      "phone": "Teléfono",
+      "whatsapp": "WhatsApp",
+      "email": "Correo",
+      "hours": "Horario",
+      "hoursValue": "Lun–Vie, 8:00–18:00 (GMT-5)",
+      "office": "Oficina en Panamá",
+      "company": "Customs Clearance, S.A.",
+      "location": "Ciudad de Panamá, Panamá"
+    }
+  },
+  "footer": {
+    "description": "Servicios completos de agencia aduanera y logística para carga que llega a Panamá desde cualquier parte del mundo.",
+    "services": "Servicios",
+    "company": "Empresa",
+    "contact": "Contacto",
+    "about": "Nosotros",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "rights": "Todos los derechos reservados."
+  },
+  "track": {
+    "title": "Rastrea tu envío",
+    "placeholder": "Ingresa el código de rastreo (ej., CC-2026-04827)",
+    "button": "Rastrear",
+    "searching": "Buscando..."
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 import { motion, useInView } from "framer-motion";
 import {
   FileCheck2,
@@ -14,48 +15,27 @@ import {
   Truck
 } from "lucide-react";
 
-const services = [
-  {
-    icon: FileCheck2,
-    title: "Customs Clearance",
-    description: "Full import and export documentation, tariff classification, and regulatory compliance.",
-  },
-  {
-    icon: PackageCheck,
-    title: "Nationalizations",
-    description: "Complete nationalization process for goods entering Panama's customs territory.",
-  },
-  {
-    icon: RefreshCw,
-    title: "Re-exports & Transit",
-    description: "Temporary imports, re-export procedures, and in-transit cargo management.",
-  },
-  {
-    icon: Ship,
-    title: "Sea Freight",
-    description: "FCL and LCL ocean freight from any port worldwide to Panama.",
-  },
-  {
-    icon: Plane,
-    title: "Air Freight",
-    description: "Express and standard air cargo services with full customs handling.",
-  },
-  {
-    icon: Thermometer,
-    title: "Cold Chain",
-    description: "Temperature-controlled logistics for perishables and pharmaceuticals.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Custody of Valuables",
-    description: "Secure handling and storage for high-value and sensitive cargo.",
-  },
-  {
-    icon: Truck,
-    title: "Live Animals",
-    description: "Specialized permits and logistics for live animal imports and exports.",
-  },
+const serviceIcons = [
+  FileCheck2,
+  PackageCheck,
+  RefreshCw,
+  Ship,
+  Plane,
+  Thermometer,
+  ShieldCheck,
+  Truck,
 ];
+
+const serviceKeys = [
+  "customsClearance",
+  "nationalizations",
+  "reexports",
+  "seaFreight",
+  "airFreight",
+  "coldChain",
+  "custody",
+  "liveAnimals",
+] as const;
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -80,8 +60,15 @@ const itemVariants = {
 };
 
 export function ServicesGrid() {
+  const t = useTranslations("services");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+  const services = serviceKeys.map((key, index) => ({
+    icon: serviceIcons[index],
+    title: t(`items.${key}.title`),
+    description: t(`items.${key}.description`),
+  }));
 
   return (
     <section id="services" className="relative bg-white py-24 md:py-32">
@@ -100,11 +87,11 @@ export function ServicesGrid() {
           className="mx-auto mb-16 max-w-2xl text-center"
         >
           <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
-            Our Services
+            {t("badge")}
           </span>
-          <h2 className="mb-4">Complete customs & logistics solutions.</h2>
+          <h2 className="mb-4">{t("title")}</h2>
           <p className="text-lg text-foreground">
-            From documentation to delivery, we handle every step of your international trade operations.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -115,7 +102,7 @@ export function ServicesGrid() {
           animate={isInView ? "visible" : "hidden"}
           className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
         >
-          {services.map((service, index) => (
+          {services.map((service) => (
             <motion.div
               key={service.title}
               variants={itemVariants}
@@ -147,7 +134,7 @@ export function ServicesGrid() {
             href="#contact"
             className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Request a quote
+            {t("cta")}
             <ArrowRight className="h-4 w-4" />
           </a>
         </motion.div>

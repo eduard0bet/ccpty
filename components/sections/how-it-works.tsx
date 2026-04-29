@@ -1,45 +1,24 @@
 "use client";
 
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 import { motion, useInView } from "framer-motion";
-import { UserPlus, ShoppingCart, Package, Ship, Home, ChevronRight } from "lucide-react";
+import { ShoppingCart, Package, Ship, Home, UserPlus, ChevronRight } from "lucide-react";
 
-const steps = [
-  {
-    number: "01",
-    icon: ShoppingCart,
-    title: "Request a quote",
-    description: "Tell us about your cargo and we'll provide a detailed quote.",
-  },
-  {
-    number: "02",
-    icon: Package,
-    title: "We coordinate logistics",
-    description: "We arrange pickup, freight, and all documentation.",
-  },
-  {
-    number: "03",
-    icon: Ship,
-    title: "Cargo arrives in Panama",
-    description: "We receive your shipment and begin customs processing.",
-  },
-  {
-    number: "04",
-    icon: Home,
-    title: "Customs clearance",
-    description: "Full nationalization, permits, and regulatory compliance.",
-  },
-  {
-    number: "05",
-    icon: UserPlus,
-    title: "Ready for distribution",
-    description: "Cargo released and ready for pickup or last-mile delivery.",
-  },
-];
+const stepIcons = [ShoppingCart, Package, Ship, Home, UserPlus];
+const stepKeys = ["quote", "logistics", "arrival", "clearance", "distribution"] as const;
 
 export function HowItWorks() {
+  const t = useTranslations("howItWorks");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+
+  const steps = stepKeys.map((key, index) => ({
+    number: String(index + 1).padStart(2, "0"),
+    icon: stepIcons[index],
+    title: t(`steps.${key}.title`),
+    description: t(`steps.${key}.description`),
+  }));
 
   return (
     <section id="how-it-works" className="relative overflow-hidden bg-primary py-24 md:py-32">
@@ -58,11 +37,11 @@ export function HowItWorks() {
           className="mx-auto mb-16 max-w-2xl text-center"
         >
           <span className="mb-4 inline-block rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white/90">
-            Simple Process
+            {t("badge")}
           </span>
-          <h2 className="mb-4 text-white">How it works.</h2>
+          <h2 className="mb-4 text-white">{t("title")}</h2>
           <p className="text-lg text-white/70">
-            From sign-up to delivery in five simple steps.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -136,7 +115,7 @@ export function HowItWorks() {
             href="#contact"
             className="inline-flex items-center gap-2 rounded-md bg-white px-8 py-4 text-sm font-semibold text-primary transition-all hover:bg-white/90 hover:shadow-lg"
           >
-            Get started now
+            {t("cta")}
             <ChevronRight className="h-4 w-4" />
           </a>
         </motion.div>

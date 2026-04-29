@@ -1,0 +1,210 @@
+{
+  "metadata": {
+    "title": "Customs Clearance | Customs Brokerage & Logistics in Panama",
+    "description": "Full-service customs brokerage and logistics in Panama. Import, export, transit, nationalization, cold chain, and more."
+  },
+  "nav": {
+    "services": "Services",
+    "howItWorks": "How it works",
+    "routes": "Routes",
+    "contact": "Contact",
+    "getQuote": "Get a quote",
+    "language": "EN"
+  },
+  "hero": {
+    "badge": "World → Panama | Full customs & logistics",
+    "title": "Customs & Logistics Solutions in Panama.",
+    "subtitle": "From import and export to transit and nationalization — we handle everything so your cargo moves without delays.",
+    "cta": "Get a quote",
+    "secondaryCta": "Track shipment",
+    "features": {
+      "licensed": "Licensed customs broker",
+      "strategic": "Strategic location",
+      "fast": "Fast clearance"
+    },
+    "trust": {
+      "title": "Trusted by importers from",
+      "usa": "USA",
+      "china": "China",
+      "europe": "Europe",
+      "southAmerica": "South America"
+    }
+  },
+  "services": {
+    "badge": "Our Services",
+    "title": "Complete customs & logistics solutions.",
+    "subtitle": "From documentation to delivery, we handle every step of your international trade operations.",
+    "cta": "Request a quote",
+    "items": {
+      "customsClearance": {
+        "title": "Customs Clearance",
+        "description": "Full import and export documentation, tariff classification, and regulatory compliance."
+      },
+      "nationalizations": {
+        "title": "Nationalizations",
+        "description": "Complete nationalization process for goods entering Panama's customs territory."
+      },
+      "reexports": {
+        "title": "Re-exports & Transit",
+        "description": "Temporary imports, re-export procedures, and in-transit cargo management."
+      },
+      "seaFreight": {
+        "title": "Sea Freight",
+        "description": "FCL and LCL ocean freight from any port worldwide to Panama."
+      },
+      "airFreight": {
+        "title": "Air Freight",
+        "description": "Express and standard air cargo services with full customs handling."
+      },
+      "coldChain": {
+        "title": "Cold Chain",
+        "description": "Temperature-controlled logistics for perishables and pharmaceuticals."
+      },
+      "custody": {
+        "title": "Custody of Valuables",
+        "description": "Secure handling and storage for high-value and sensitive cargo."
+      },
+      "liveAnimals": {
+        "title": "Live Animals",
+        "description": "Specialized permits and logistics for live animal imports and exports."
+      }
+    }
+  },
+  "howItWorks": {
+    "badge": "Simple Process",
+    "title": "How it works.",
+    "subtitle": "From sign-up to delivery in five simple steps.",
+    "cta": "Get started now",
+    "steps": {
+      "quote": {
+        "title": "Request a quote",
+        "description": "Tell us about your cargo and we'll provide a detailed quote."
+      },
+      "logistics": {
+        "title": "We coordinate logistics",
+        "description": "We arrange pickup, freight, and all documentation."
+      },
+      "arrival": {
+        "title": "Cargo arrives in Panama",
+        "description": "We receive your shipment and begin customs processing."
+      },
+      "clearance": {
+        "title": "Customs clearance",
+        "description": "Full nationalization, permits, and regulatory compliance."
+      },
+      "distribution": {
+        "title": "Ready for distribution",
+        "description": "Cargo released and ready for pickup or last-mile delivery."
+      }
+    }
+  },
+  "routes": {
+    "badge": "Global Coverage",
+    "title": "From anywhere to Panama.",
+    "subtitle": "We handle customs and logistics for cargo arriving from all major trade routes worldwide.",
+    "cta": "Let us handle it!",
+    "legend": {
+      "origin": "Origin",
+      "panama": "Panama"
+    },
+    "origins": {
+      "usa": "United States",
+      "china": "China",
+      "europe": "Europe",
+      "southAmerica": "South America"
+    },
+    "services": {
+      "imports": {
+        "title": "Imports",
+        "description": "Full customs clearance for goods entering Panama"
+      },
+      "exports": {
+        "title": "Exports",
+        "description": "Documentation and compliance for outbound cargo"
+      },
+      "reexports": {
+        "title": "Re-exports",
+        "description": "Temporary import and re-export procedures"
+      },
+      "transit": {
+        "title": "Transit",
+        "description": "In-transit cargo through Panama's free zones"
+      }
+    }
+  },
+  "contact": {
+    "badge": "Get Started",
+    "title": "Tell us about your shipment.",
+    "subtitle": "We'll come back with a quote and a recommended route within 24 hours.",
+    "form": {
+      "fullName": "Full name",
+      "company": "Company",
+      "email": "Email",
+      "phone": "Phone / WhatsApp",
+      "cargoOrigin": "Cargo origin",
+      "selectOrigin": "Select origin",
+      "service": "Service of interest",
+      "selectService": "Select service",
+      "message": "Message",
+      "messagePlaceholder": "Describe your shipment needs, product types, frequency, etc.",
+      "consent": "I agree to the",
+      "privacyPolicy": "privacy policy",
+      "consentEnd": "and consent to being contacted.",
+      "submit": "Send message",
+      "sending": "Sending...",
+      "required": "*"
+    },
+    "origins": {
+      "usa": "United States",
+      "china": "China",
+      "europe": "Europe",
+      "southAmerica": "South America",
+      "centralAmerica": "Central America",
+      "other": "Other"
+    },
+    "services": {
+      "import": "Import / Customs Clearance",
+      "export": "Export",
+      "reexport": "Re-export",
+      "transit": "Transit",
+      "nationalization": "Nationalization",
+      "coldChain": "Cold Chain / Perishables",
+      "liveAnimals": "Live Animals",
+      "custody": "Custody of Valuables",
+      "notSure": "Not sure / Other"
+    },
+    "success": {
+      "title": "Message sent!",
+      "message": "Thank you for your inquiry. We'll get back to you within 24 hours with a quote and recommended route.",
+      "another": "Send another message"
+    },
+    "error": "Something went wrong. Please try again or contact us directly.",
+    "info": {
+      "title": "Contact directly",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "email": "Email",
+      "hours": "Hours",
+      "hoursValue": "Mon–Fri, 8:00–18:00 (GMT-5)",
+      "office": "Panama Office",
+      "company": "Customs Clearance, S.A.",
+      "location": "Panama City, Panama"
+    }
+  },
+  "footer": {
+    "description": "Full-service customs brokerage and logistics solutions for cargo arriving in Panama from anywhere in the world.",
+    "services": "Services",
+    "company": "Company",
+    "contact": "Contact",
+    "about": "About",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "rights": "All rights reserved."
+  },
+  "track": {
+    "title": "Track your shipment",
+    "placeholder": "Enter tracking code (e.g., CC-2026-04827)",
+    "button": "Track",
+    "searching": "Searching..."
+  }
+}

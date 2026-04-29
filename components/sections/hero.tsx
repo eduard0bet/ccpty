@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -18,14 +19,6 @@ import {
   Shield,
   Zap,
 } from "lucide-react";
-
-const trustBadges = ["USA", "China", "Europe", "South America"];
-
-const features = [
-  { icon: Shield, text: "Licensed customs broker" },
-  { icon: MapPin, text: "Strategic location in Panama" },
-  { icon: Zap, text: "Fast clearance & delivery" },
-];
 
 const DEMO_TRACKING = {
   trackingNumber: "CC-2026-04827",
@@ -70,6 +63,22 @@ const itemVariants = {
 type TabType = "cta" | "tracking";
 
 export function Hero() {
+  const t = useTranslations("hero");
+  const tTrack = useTranslations("track");
+
+  const trustBadges = [
+    t("trust.usa"),
+    t("trust.china"),
+    t("trust.europe"),
+    t("trust.southAmerica"),
+  ];
+
+  const features = [
+    { icon: Shield, text: t("features.licensed") },
+    { icon: MapPin, text: t("features.strategic") },
+    { icon: Zap, text: t("features.fast") },
+  ];
+
   const [activeTab, setActiveTab] = useState<TabType>("cta");
   const [trackingNumber, setTrackingNumber] = useState("");
   const [showResult, setShowResult] = useState(false);
@@ -177,7 +186,7 @@ export function Hero() {
                   className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-sm sm:px-4 sm:py-2"
                 >
                   <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
-                  <span className="text-xs font-medium text-white/90">World → Panama | Full customs & logistics</span>
+                  <span className="text-xs font-medium text-white/90">{t("badge")}</span>
                 </motion.div>
 
                 {/* Title */}
@@ -185,11 +194,7 @@ export function Hero() {
                   variants={itemVariants}
                   className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
                 >
-                  Customs & Logistics
-                  <br />
-                  <span className="bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent">
-                    Solutions in Panama.
-                  </span>
+                  {t("title")}
                 </motion.h1>
 
                 {/* Subtitle */}
@@ -197,7 +202,7 @@ export function Hero() {
                   variants={itemVariants}
                   className="mx-auto mb-8 max-w-xl text-base text-white/70 sm:text-lg md:mb-10 md:text-xl"
                 >
-                  Import, export, transit, and nationalization services. Licensed customs brokers with full logistics support from anywhere in the world.
+                  {t("subtitle")}
                 </motion.p>
 
                 {/* Tabs */}
@@ -211,7 +216,7 @@ export function Hero() {
                           : "text-white/70 hover:text-white"
                       }`}
                     >
-                      Get Started
+                      {t("cta")}
                     </button>
                     <button
                       onClick={() => setActiveTab("tracking")}
@@ -223,7 +228,7 @@ export function Hero() {
                     >
                       <span className="flex items-center justify-center gap-2">
                         <Search className="h-4 w-4" />
-                        Track Cargo
+                        {t("secondaryCta")}
                       </span>
                     </button>
                   </div>
@@ -259,14 +264,14 @@ export function Hero() {
                           href="#contact"
                           className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-white px-8 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all hover:bg-white/90 hover:shadow-xl sm:w-auto sm:text-lg"
                         >
-                          Let us handle it!
+                          {t("cta")}
                           <ArrowRight className="h-5 w-5" />
                         </Link>
                         <Link
                           href="#services"
                           className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl border border-white/30 px-8 text-base font-medium text-white transition-all hover:bg-white/10 sm:w-auto"
                         >
-                          See how it works
+                          {t("secondaryCta")}
                         </Link>
                       </div>
                     </motion.div>
@@ -285,7 +290,7 @@ export function Hero() {
                           <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/40" />
                           <input
                             type="text"
-                            placeholder="e.g. CC-2026-04827"
+                            placeholder={tTrack("placeholder")}
                             value={trackingNumber}
                             onChange={(e) => setTrackingNumber(e.target.value)}
                             onKeyDown={handleKeyPress}
@@ -306,11 +311,11 @@ export function Hero() {
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                               />
-                              <span className="hidden sm:inline">Searching...</span>
+                              <span className="hidden sm:inline">{tTrack("searching")}</span>
                             </>
                           ) : (
                             <>
-                              Track
+                              {tTrack("button")}
                               <ArrowRight className="h-5 w-5" />
                             </>
                           )}
@@ -333,7 +338,7 @@ export function Hero() {
                   variants={itemVariants}
                   className="mt-12 flex flex-wrap items-center justify-center gap-2 sm:mt-16 sm:gap-3"
                 >
-                  <span className="w-full text-xs text-white/50 sm:w-auto sm:text-sm">We handle cargo from</span>
+                  <span className="w-full text-xs text-white/50 sm:w-auto sm:text-sm">{t("trust.title")}</span>
                   <div className="flex flex-wrap items-center justify-center gap-2">
                     {trustBadges.map((badge, index) => (
                       <motion.span

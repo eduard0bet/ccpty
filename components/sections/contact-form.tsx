@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { Phone, Mail, Clock, CheckCircle, AlertCircle, Send, MapPin, MessageCircle } from "lucide-react";
@@ -24,14 +25,34 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  contactSchema,
-  type ContactFormData,
-  originOptions,
-  serviceOptions,
-} from "@/lib/schemas/contact";
+import { contactSchema, type ContactFormData } from "@/lib/schemas/contact";
+
+const originKeys = ["usa", "china", "europe", "southAmerica", "centralAmerica", "other"] as const;
+const serviceKeys = ["import", "export", "reexport", "transit", "nationalization", "coldChain", "liveAnimals", "custody", "notSure"] as const;
+
+const originValues: Record<string, string> = {
+  usa: "usa",
+  china: "china",
+  europe: "europe",
+  southAmerica: "south-america",
+  centralAmerica: "central-america",
+  other: "other",
+};
+
+const serviceValues: Record<string, string> = {
+  import: "import",
+  export: "export",
+  reexport: "re-export",
+  transit: "transit",
+  nationalization: "nationalization",
+  coldChain: "cold-chain",
+  liveAnimals: "live-animals",
+  custody: "custody",
+  notSure: "not-sure",
+};
 
 export function ContactForm() {
+  const t = useTranslations("contact");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const form = useForm<ContactFormData>({
@@ -93,7 +114,7 @@ export function ContactForm() {
             transition={{ delay: 0.3 }}
             className="mb-4"
           >
-            Message sent!
+            {t("success.title")}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -101,8 +122,7 @@ export function ContactForm() {
             transition={{ delay: 0.4 }}
             className="text-lg text-foreground/80"
           >
-            Thank you for your inquiry. We&apos;ll get back to you within 24 hours with a quote
-            and recommended route.
+            {t("success.message")}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -110,7 +130,7 @@ export function ContactForm() {
             transition={{ delay: 0.5 }}
           >
             <Button onClick={() => setStatus("idle")} className="mt-8">
-              Send another message
+              {t("success.another")}
             </Button>
           </motion.div>
         </motion.div>
@@ -134,11 +154,11 @@ export function ContactForm() {
           className="mx-auto mb-16 max-w-2xl text-center"
         >
           <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
-            Get Started
+            {t("badge")}
           </span>
-          <h2 className="mb-4">Tell us about your shipment.</h2>
+          <h2 className="mb-4">{t("title")}</h2>
           <p className="text-lg text-foreground/80">
-            We&apos;ll come back with a quote and a recommended route within 24 hours.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -160,7 +180,7 @@ export function ContactForm() {
                       name="fullName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Full name *</FormLabel>
+                          <FormLabel>{t("form.fullName")} {t("form.required")}</FormLabel>
                           <FormControl>
                             <Input placeholder="John Doe" {...field} />
                           </FormControl>
@@ -174,7 +194,7 @@ export function ContactForm() {
                       name="company"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Company</FormLabel>
+                          <FormLabel>{t("form.company")}</FormLabel>
                           <FormControl>
                             <Input placeholder="Your company" {...field} />
                           </FormControl>
@@ -190,7 +210,7 @@ export function ContactForm() {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email *</FormLabel>
+                          <FormLabel>{t("form.email")} {t("form.required")}</FormLabel>
                           <FormControl>
                             <Input type="email" placeholder="john@company.com" {...field} />
                           </FormControl>
@@ -204,7 +224,7 @@ export function ContactForm() {
                       name="phone"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Phone / WhatsApp *</FormLabel>
+                          <FormLabel>{t("form.phone")} {t("form.required")}</FormLabel>
                           <FormControl>
                             <Input type="tel" placeholder="+507 6XXX-XXXX" {...field} />
                           </FormControl>
@@ -220,17 +240,17 @@ export function ContactForm() {
                       name="cargoOrigin"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Cargo origin *</FormLabel>
+                          <FormLabel>{t("form.cargoOrigin")} {t("form.required")}</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                               <SelectTrigger>
-                                <SelectValue placeholder="Select origin" />
+                                <SelectValue placeholder={t("form.selectOrigin")} />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              {originOptions.map((option) => (
-                                <SelectItem key={option.value} value={option.value}>
-                                  {option.label}
+                              {originKeys.map((key) => (
+                                <SelectItem key={key} value={originValues[key]}>
+                                  {t(`origins.${key}`)}
                                 </SelectItem>
                               ))}
                             </SelectContent>
@@ -245,17 +265,17 @@ export function ContactForm() {
                       name="service"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Service of interest *</FormLabel>
+                          <FormLabel>{t("form.service")} {t("form.required")}</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                               <SelectTrigger>
-                                <SelectValue placeholder="Select service" />
+                                <SelectValue placeholder={t("form.selectService")} />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              {serviceOptions.map((option) => (
-                                <SelectItem key={option.value} value={option.value}>
-                                  {option.label}
+                              {serviceKeys.map((key) => (
+                                <SelectItem key={key} value={serviceValues[key]}>
+                                  {t(`services.${key}`)}
                                 </SelectItem>
                               ))}
                             </SelectContent>
@@ -271,10 +291,10 @@ export function ContactForm() {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Message *</FormLabel>
+                        <FormLabel>{t("form.message")} {t("form.required")}</FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Describe your shipment needs, product types, frequency, etc."
+                            placeholder={t("form.messagePlaceholder")}
                             className="min-h-28 resize-none rounded-md"
                             {...field}
                           />
@@ -300,11 +320,11 @@ export function ContactForm() {
                         </FormControl>
                         <div className="space-y-1 leading-none">
                           <FormLabel className="text-sm font-normal text-foreground/70">
-                            I agree to the{" "}
+                            {t("form.consent")}{" "}
                             <a href="/privacy" className="text-primary underline hover:text-primary/80">
-                              privacy policy
+                              {t("form.privacyPolicy")}
                             </a>{" "}
-                            and consent to being contacted. *
+                            {t("form.consentEnd")} {t("form.required")}
                           </FormLabel>
                           <FormMessage />
                         </div>
@@ -319,7 +339,7 @@ export function ContactForm() {
                       className="flex items-center gap-2 rounded-md bg-red-50 p-4 text-sm text-red-700"
                     >
                       <AlertCircle className="h-4 w-4 shrink-0" />
-                      Something went wrong. Please try again or contact us directly.
+                      {t("error")}
                     </motion.div>
                   )}
 
@@ -330,11 +350,11 @@ export function ContactForm() {
                     className="w-full gap-2 rounded-md"
                   >
                     {status === "loading" ? (
-                      "Sending..."
+                      t("form.sending")
                     ) : (
                       <>
                         <Send className="h-4 w-4" />
-                        Send message
+                        {t("form.submit")}
                       </>
                     )}
                   </Button>
@@ -352,14 +372,14 @@ export function ContactForm() {
             className="space-y-6 lg:col-span-2"
           >
             <div className="rounded-lg bg-primary p-6 text-white">
-              <h3 className="mb-6 text-lg font-semibold">Contact directly</h3>
+              <h3 className="mb-6 text-lg font-semibold">{t("info.title")}</h3>
               <div className="space-y-5">
                 <div className="flex items-start gap-4">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/20">
                     <Phone className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="font-medium">Phone</p>
+                    <p className="font-medium">{t("info.phone")}</p>
                     <p className="text-white/70">+507 XXXX-XXXX</p>
                   </div>
                 </div>
@@ -368,7 +388,7 @@ export function ContactForm() {
                     <MessageCircle className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="font-medium">WhatsApp</p>
+                    <p className="font-medium">{t("info.whatsapp")}</p>
                     <p className="text-white/70">+507 XXXX-XXXX</p>
                   </div>
                 </div>
@@ -377,7 +397,7 @@ export function ContactForm() {
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="font-medium">Email</p>
+                    <p className="font-medium">{t("info.email")}</p>
                     <p className="text-white/70">hello@customsclearance.com</p>
                   </div>
                 </div>
@@ -386,8 +406,8 @@ export function ContactForm() {
                     <Clock className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="font-medium">Hours</p>
-                    <p className="text-white/70">Mon–Fri, 8:00–18:00 (GMT-5)</p>
+                    <p className="font-medium">{t("info.hours")}</p>
+                    <p className="text-white/70">{t("info.hoursValue")}</p>
                   </div>
                 </div>
               </div>
@@ -399,10 +419,10 @@ export function ContactForm() {
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <p className="font-semibold text-foreground">Panama Office</p>
+                  <p className="font-semibold text-foreground">{t("info.office")}</p>
                   <p className="mt-1 text-sm text-foreground/70">
-                    Customs Clearance, S.A.<br />
-                    Panama City, Panama
+                    {t("info.company")}<br />
+                    {t("info.location")}
                   </p>
                 </div>
               </div>

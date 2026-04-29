@@ -1,24 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Logo } from "@/components/shared/logo";
 import { ExternalLink, MessageCircle } from "lucide-react";
-
-const services = [
-  { label: "Air Freight", href: "#services" },
-  { label: "Sea Freight (LCL/FCL)", href: "#services" },
-  { label: "Customs Clearance", href: "#services" },
-  { label: "Door-to-door Delivery", href: "#services" },
-  { label: "Consolidation", href: "#services" },
-  { label: "Tracking", href: "#tracking" },
-];
-
-const company = [
-  { label: "About", href: "/about" },
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Routes", href: "#routes" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
-  { label: "Get a quote", href: "#contact" },
-];
 
 const socials = [
   { label: "LinkedIn", href: "#", icon: ExternalLink },
@@ -28,6 +13,27 @@ const socials = [
 ];
 
 export function Footer() {
+  const t = useTranslations("footer");
+  const tNav = useTranslations("nav");
+  const tServices = useTranslations("services.items");
+
+  const services = [
+    { label: tServices("airFreight.title"), href: "#services" },
+    { label: tServices("seaFreight.title"), href: "#services" },
+    { label: tServices("customsClearance.title"), href: "#services" },
+    { label: tServices("coldChain.title"), href: "#services" },
+    { label: tServices("nationalizations.title"), href: "#services" },
+    { label: tServices("custody.title"), href: "#services" },
+  ];
+
+  const company = [
+    { label: t("about"), href: "/about" },
+    { label: tNav("howItWorks"), href: "#how-it-works" },
+    { label: tNav("routes"), href: "#routes" },
+    { label: tNav("contact"), href: "#contact" },
+    { label: tNav("getQuote"), href: "#contact" },
+  ];
+
   return (
     <footer className="bg-primary text-white/70">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -35,7 +41,7 @@ export function Footer() {
           <div>
             <Logo variant="light" className="mb-4" />
             <p className="mb-6 text-sm">
-              End-to-end logistics from China to Central America.
+              {t("description")}
             </p>
             <div className="flex gap-4">
               {socials.map((social) => (
@@ -53,7 +59,7 @@ export function Footer() {
 
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
-              Services
+              {t("services")}
             </h4>
             <ul className="space-y-3">
               {services.map((item) => (
@@ -71,7 +77,7 @@ export function Footer() {
 
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
-              Company
+              {t("company")}
             </h4>
             <ul className="space-y-3">
               {company.map((item) => (
@@ -89,18 +95,12 @@ export function Footer() {
 
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
-              Contact
+              {t("contact")}
             </h4>
             <div className="space-y-4 text-sm">
               <div>
-                <p className="font-medium text-white">Headquarters (Panama)</p>
-                <p>Customs Clearance, S.A.</p>
+                <p className="font-medium text-white">Customs Clearance, S.A.</p>
                 <p>Panama City, Panama</p>
-                <p>RUC: [placeholder]</p>
-              </div>
-              <div>
-                <p className="font-medium text-white">China Operations</p>
-                <p>Shenzhen, Guangdong, China</p>
               </div>
               <div>
                 <p>
@@ -122,14 +122,14 @@ export function Footer() {
         <div className="mt-12 border-t border-white/10 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <p className="text-sm">
-              © 2026 Customs Clearance, S.A. All rights reserved.
+              © 2026 Customs Clearance, S.A. {t("rights")}
             </p>
             <div className="flex gap-6 text-sm">
               <Link href="/terms" className="hover:text-white">
-                Terms
+                {t("terms")}
               </Link>
               <Link href="/privacy" className="hover:text-white">
-                Privacy
+                {t("privacy")}
               </Link>
               <span className="text-white/50">Built in Panama</span>
             </div>

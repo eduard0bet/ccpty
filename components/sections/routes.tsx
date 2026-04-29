@@ -1,7 +1,8 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { Plane, Ship, Globe } from "lucide-react";
+import { Ship, Globe } from "lucide-react";
 import {
   Map,
   MapMarker,
@@ -11,28 +12,37 @@ import {
 } from "@/components/ui/map";
 
 const origins = [
-  { code: "USA", name: "United States", city: "Miami", lng: -80.1918, lat: 25.7617 },
-  { code: "CHN", name: "China", city: "Shanghai", lng: 121.4737, lat: 31.2304 },
-  { code: "EUR", name: "Europe", city: "Rotterdam", lng: 4.4777, lat: 51.9244 },
-  { code: "SAM", name: "South America", city: "São Paulo", lng: -46.6333, lat: -23.5505 },
+  { code: "USA", city: "Miami", lng: -80.1918, lat: 25.7617 },
+  { code: "CHN", city: "Shanghai", lng: 121.4737, lat: 31.2304 },
+  { code: "EUR", city: "Rotterdam", lng: 4.4777, lat: 51.9244 },
+  { code: "SAM", city: "São Paulo", lng: -46.6333, lat: -23.5505 },
 ];
 
 const panama = { code: "PTY", name: "Panama", city: "Panama City", lng: -79.5188, lat: 8.9824 };
 
-const services = [
-  { title: "Imports", description: "Full customs clearance for goods entering Panama" },
-  { title: "Exports", description: "Documentation and compliance for outbound cargo" },
-  { title: "Re-exports", description: "Temporary import and re-export procedures" },
-  { title: "Transit", description: "In-transit cargo through Panama's free zones" },
-];
-
-const arcData = origins.map((origin, idx) => ({
-  id: `arc-${idx}`,
-  from: [origin.lng, origin.lat] as [number, number],
-  to: [panama.lng, panama.lat] as [number, number],
-}));
+const serviceKeys = ["imports", "exports", "reexports", "transit"] as const;
 
 export function Routes() {
+  const t = useTranslations("routes");
+
+  const arcData = origins.map((origin, idx) => ({
+    id: `arc-${idx}`,
+    from: [origin.lng, origin.lat] as [number, number],
+    to: [panama.lng, panama.lat] as [number, number],
+  }));
+
+  const originNames: Record<string, string> = {
+    USA: t("origins.usa"),
+    CHN: t("origins.china"),
+    EUR: t("origins.europe"),
+    SAM: t("origins.southAmerica"),
+  };
+
+  const services = serviceKeys.map((key) => ({
+    title: t(`services.${key}.title`),
+    description: t(`services.${key}.description`),
+  }));
+
   return (
     <section id="routes" className="bg-white py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -44,11 +54,11 @@ export function Routes() {
           className="mx-auto mb-12 max-w-2xl text-center"
         >
           <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
-            Global Coverage
+            {t("badge")}
           </span>
-          <h2 className="mb-4">From anywhere to Panama.</h2>
+          <h2 className="mb-4">{t("title")}</h2>
           <p className="text-lg text-foreground">
-            We handle customs and logistics for cargo arriving from all major trade routes worldwide.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -97,7 +107,7 @@ export function Routes() {
                 </MarkerContent>
                 <MarkerTooltip>
                   <div className="text-center">
-                    <p className="font-semibold">{origin.name}</p>
+                    <p className="font-semibold">{originNames[origin.code]}</p>
                     <p className="text-xs opacity-80">{origin.city}</p>
                   </div>
                 </MarkerTooltip>
@@ -127,13 +137,13 @@ export function Routes() {
               <div className="flex h-4 w-4 items-center justify-center rounded-full bg-foreground">
                 <Globe className="h-2.5 w-2.5 text-white" />
               </div>
-              <span>Origin</span>
+              <span>{t("legend.origin")}</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="flex h-4 w-4 items-center justify-center rounded-full bg-primary">
                 <Ship className="h-2.5 w-2.5 text-white" />
               </div>
-              <span>Panama</span>
+              <span>{t("legend.panama")}</span>
             </div>
           </div>
         </motion.div>
@@ -165,7 +175,7 @@ export function Routes() {
             href="#contact"
             className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Let us handle it!
+            {t("cta")}
           </a>
         </motion.div>
       </div>
