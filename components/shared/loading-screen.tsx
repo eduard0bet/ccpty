@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -8,27 +8,25 @@ interface LoadingScreenProps {
   children: React.ReactNode;
 }
 
+let hasShownLoadingThisSession = false;
+
 export function LoadingScreen({ children }: LoadingScreenProps) {
-  const [isLoading, setIsLoading] = useState<boolean | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const hasInitialized = useRef(false);
 
   useEffect(() => {
-    const hasSeenLoading = sessionStorage.getItem("ccpty-loaded");
+    if (hasInitialized.current) return;
+    hasInitialized.current = true;
 
-    if (hasSeenLoading) {
-      setIsLoading(false);
-    } else {
+    if (!hasShownLoadingThisSession) {
+      hasShownLoadingThisSession = true;
       setIsLoading(true);
       const timer = setTimeout(() => {
         setIsLoading(false);
-        sessionStorage.setItem("ccpty-loaded", "true");
       }, 3000);
       return () => clearTimeout(timer);
     }
   }, []);
-
-  if (isLoading === null) {
-    return null;
-  }
 
   return (
     <>
@@ -116,7 +114,7 @@ export function LoadingScreen({ children }: LoadingScreenProps) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoading ? 0 : 1 }}
-        transition={{ duration: 0.5, delay: isLoading ? 0.3 : 0 }}
+        transition={{ duration: 0.5, delay: isLoading ? 0 : 0.3 }}
       >
         {children}
       </motion.div>
