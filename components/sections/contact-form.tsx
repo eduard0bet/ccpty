@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
-import { Phone, Mail, Clock, CheckCircle, AlertCircle, Send, MapPin, MessageCircle } from "lucide-react";
+import { Mail, Clock, CheckCircle, AlertCircle, Send, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -376,29 +376,16 @@ export function ContactForm() {
               <div className="space-y-5">
                 <div className="flex items-start gap-4">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/20">
-                    <Phone className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="font-medium">{t("info.phone")}</p>
-                    <p className="text-white/70">+507 XXXX-XXXX</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/20">
-                    <MessageCircle className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="font-medium">{t("info.whatsapp")}</p>
-                    <p className="text-white/70">+507 XXXX-XXXX</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/20">
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="font-medium">{t("info.email")}</p>
-                    <p className="text-white/70">hello@customsclearance.com</p>
+                    <a
+                      href="mailto:info@ccptympto.com"
+                      className="text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
+                    >
+                      info@ccptympto.com
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">

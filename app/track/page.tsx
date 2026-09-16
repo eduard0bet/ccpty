@@ -29,8 +29,15 @@ export default function TrackPage() {
               If you can&apos;t find your tracking number or need assistance, contact our support team:
             </p>
             <ul className="space-y-2 text-sm text-foreground">
-              <li>Email: hello@customsclearance.com</li>
-              <li>WhatsApp: +507 XXXX-XXXX</li>
+              <li>
+                Email:{" "}
+                <a
+                  href="mailto:info@ccptympto.com"
+                  className="underline-offset-4 transition-colors hover:text-primary hover:underline"
+                >
+                  info@ccptympto.com
+                </a>
+              </li>
               <li>Hours: Mon–Fri, 8:00–18:00 (GMT-5)</li>
             </ul>
           </div>

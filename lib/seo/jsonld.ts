@@ -16,7 +16,7 @@ export function getOrganizationSchema() {
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: "+507-XXXX-XXXX",
+        email: "info@ccptympto.com",
         contactType: "customer service",
         availableLanguage: ["English", "Spanish"],
       },
@@ -36,8 +36,7 @@ export function getLocalBusinessSchema() {
     name: "Customs Clearance",
     description: "Freight forwarding and customs brokerage services from China to Panama and Central America.",
     url: "https://customsclearance.com",
-    telephone: "+507-XXXX-XXXX",
-    email: "hello@customsclearance.com",
+    email: "info@ccptympto.com",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Panama City",

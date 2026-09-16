@@ -16,22 +16,23 @@ export function Footer() {
   const t = useTranslations("footer");
   const tNav = useTranslations("nav");
   const tServices = useTranslations("services.items");
+  const tInfo = useTranslations("contact.info");
 
   const services = [
-    { label: tServices("airFreight.title"), href: "#services" },
-    { label: tServices("seaFreight.title"), href: "#services" },
-    { label: tServices("customsClearance.title"), href: "#services" },
-    { label: tServices("coldChain.title"), href: "#services" },
-    { label: tServices("nationalizations.title"), href: "#services" },
-    { label: tServices("custody.title"), href: "#services" },
+    { label: tServices("airFreight.title"), href: "/#services" },
+    { label: tServices("seaFreight.title"), href: "/#services" },
+    { label: tServices("customsClearance.title"), href: "/#services" },
+    { label: tServices("coldChain.title"), href: "/#services" },
+    { label: tServices("nationalizations.title"), href: "/#services" },
+    { label: tServices("custody.title"), href: "/#services" },
   ];
 
   const company = [
     { label: t("about"), href: "/about" },
-    { label: tNav("howItWorks"), href: "#how-it-works" },
-    { label: tNav("routes"), href: "#routes" },
-    { label: tNav("contact"), href: "#contact" },
-    { label: tNav("getQuote"), href: "#contact" },
+    { label: tNav("howItWorks"), href: "/#how-it-works" },
+    { label: tNav("routes"), href: "/#routes" },
+    { label: tNav("contact"), href: "/#contact" },
+    { label: tNav("getQuote"), href: "/#contact" },
   ];
 
   return (
@@ -97,32 +98,26 @@ export function Footer() {
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">
               {t("contact")}
             </h4>
-            <div className="space-y-4 text-sm">
+            <address className="space-y-4 text-sm not-italic">
               <div>
-                <p className="font-medium text-foreground">Customs Clearance, S.A.</p>
-                <p>Panama City, Panama</p>
+                <p className="font-medium text-foreground">{tInfo("company")}</p>
+                <p>{tInfo("location")}</p>
               </div>
-              <div>
-                <p>
-                  <span className="text-foreground">Phone:</span> +507 XXXX-XXXX
-                </p>
-                <p>
-                  <span className="text-foreground">WhatsApp:</span> +507 XXXX-XXXX
-                </p>
-                <p>
-                  <span className="text-foreground">Email:</span>{" "}
-                  hello@customsclearance.com
-                </p>
-              </div>
-              <p className="text-foreground/50">Mon–Fri, 8:00–18:00 (GMT-5)</p>
-            </div>
+              <a
+                href="mailto:info@ccptympto.com"
+                className="inline-block transition-colors hover:text-primary"
+              >
+                info@ccptympto.com
+              </a>
+              <p className="text-foreground/50">{tInfo("hoursValue")}</p>
+            </address>
           </div>
         </div>
 
         <div className="mt-12 border-t border-border pt-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <p className="text-sm">
-              © 2026 Customs Clearance, S.A. {t("rights")}
+              © {new Date().getFullYear()} {tInfo("company")} {t("rights")}
             </p>
             <div className="flex gap-6 text-sm">
               <Link href="/terms" className="hover:text-primary">

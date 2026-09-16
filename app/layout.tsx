@@ -55,6 +55,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       className={`${inter.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} h-full`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider messages={messages}>
